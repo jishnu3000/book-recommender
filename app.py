@@ -1,11 +1,12 @@
 import pickle
+import pandas as pd
 import numpy as np
 from flask import Flask, render_template, request
 
-popular_books = pickle.load(open('assets/popular_books.pkl','rb'))
-book_user_rating_matrix = pickle.load(open('assets/book_user_rating_matrix.pkl','rb'))
-books = pickle.load(open('assets/books.pkl','rb'))
-similarity_scores = pickle.load(open('assets/similarity_scores.pkl','rb'))
+popular_books = pd.read_pickle('assets/popular_books.pkl')
+book_user_rating_matrix = pd.read_pickle('assets/book_user_rating_matrix.pkl')
+books = pd.read_pickle('assets/books.pkl')
+similarity_scores = pd.read_pickle('assets/similarity_scores.pkl')
 
 app = Flask(__name__)
 
