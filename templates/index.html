@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Book Recommender System</title>
+    <style>
+        body {
+            background-color: #F7FBFC;
+        }
+
+        nav {
+            background-color: #769FCD;
+        }
+
+        .navbar-brand {
+            color: #112D4E;
+        }
+
+        .custom-white {
+            color: #F9F7F7;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><strong>Book Recommender</strong></a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/"><span class="custom-white">Home</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/recommend"><span class="custom-white">Recommend Books</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <br>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Top 50 Highest Rated Books</h2>
+            </div>
+
+            {% for book in range(bookNames|length) %}
+                <div class="col-md-3" style="margin-top: 1.2rem;">
+                    <div class="card">
+                        <div class="card-body" style="background-color: #D6E6F2; padding: 0.5rem;">
+                            <img src="{{ bookImages[book] }}" alt="" class="card-img-top">
+                            <span style="font-size: 1.2rem;"><strong>{{ bookNames[book] }}</strong></span> <br>
+                            <span>{{ authors[book] }}</span> <br>
+                            <span>{{ numRatings[book] }} User Ratings</span> <br>
+                            <span>Average Rating: {{ avgRatings[book].round(2) }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor%}
+
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
